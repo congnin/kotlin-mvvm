@@ -37,6 +37,27 @@ android {
     dataBinding {
         enabled = true
     }
+
+    def dimensDefault = "default"
+
+    productFlavors {
+        flavorDimensions dimensDefault
+        dev {
+            dimension dimensDefault
+        }
+
+        sit {
+            dimension dimensDefault
+        }
+
+        preprod {
+            dimension dimensDefault
+        }
+
+        prod {
+            dimension dimensDefault
+        }
+    }
 }
 
 dependencies {

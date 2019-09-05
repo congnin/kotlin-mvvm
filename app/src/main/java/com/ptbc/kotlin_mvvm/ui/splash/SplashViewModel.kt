@@ -2,6 +2,7 @@ package com.ptbc.kotlin_mvvm.ui.splash
 
 import com.ptbc.kotlin_mvvm.data.DataManager
 import com.ptbc.kotlin_mvvm.ui.base.BaseViewModel
+import com.ptbc.kotlin_mvvm.utils.AppLogger
 import com.ptbc.kotlin_mvvm.utils.rx.SchedulerProvider
 
 class SplashViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvider) :
@@ -15,8 +16,15 @@ class SplashViewModel(dataManager: DataManager, schedulerProvider: SchedulerProv
                 .subscribeOn(schedulerProvider.io())
                 .observeOn(schedulerProvider.ui())
                 .subscribe(
-                    { aBoolean -> decideNextActivity() },
-                    { throwable -> decideNextActivity() })
+                    { aBoolean ->
+                        decideNextActivity()
+                        AppLogger.i("SplashViewModel $aBoolean")
+                        getAllQuestion()
+                    },
+                    { throwable ->
+                        decideNextActivity()
+                        AppLogger.d(throwable, "SplashViewModel")
+                    })
         )
     }
 
@@ -26,5 +34,19 @@ class SplashViewModel(dataManager: DataManager, schedulerProvider: SchedulerProv
         } else {
             navigator?.openMainActivity()
         }
+    }
+
+    fun getAllQuestion() {
+        compositeDisposable.add(
+            dataManager.allQuestions
+                .subscribeOn(schedulerProvider.io())
+                .observeOn(schedulerProvider.ui())
+                .subscribe({ listQuestion ->
+                    AppLogger.i("SplashViewModel ${listQuestion[0].questionText}")
+                },
+                    { throwable ->
+                        AppLogger.d(throwable, "SplashViewModel")
+                    })
+        )
     }
 }

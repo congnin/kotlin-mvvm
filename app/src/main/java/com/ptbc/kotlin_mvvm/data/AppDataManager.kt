@@ -158,9 +158,10 @@ constructor(
                             AppConstants.SEED_DATABASE_OPTIONS
                         ), type
                     )
-                    saveOptionList(optionList)
+                    return@concatMap saveOptionList(optionList)
+                } else {
+                    Observable.just(false)
                 }
-                Observable.just(false)
             }
     }
 
@@ -175,7 +176,7 @@ constructor(
                         CommonUtils.loadJSONFromAsset(mContext, AppConstants.SEED_DATABASE_QUESTIONS),
                         type
                     ) as List<Question>
-                    saveQuestionList(questionList)
+                    return@concatMap saveQuestionList(questionList)
                 }
                 Observable.just(false)
             }
