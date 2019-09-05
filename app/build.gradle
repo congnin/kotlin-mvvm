@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+    defaultConfig {
+        applicationId "com.ptbc.kotlin_mvvm"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+        debug {
+            buildConfigField("String", "BASE_URL", "\"http://www.mocky.io/v2\"")
+            buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "BASE_URL", "\"http://www.mocky.io/v2\"")
+            buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    // android support libraries
+    implementation "androidx.appcompat:appcompat:$rootProject.supportLibraryVersion"
+    implementation "androidx.recyclerview:recyclerview:$rootProject.recyclerViewVersion"
+    implementation "androidx.cardview:cardview:$rootProject.cardViewVersion"
+    implementation "com.google.android.material:material:$rootProject.materialVersion"
+    implementation "androidx.vectordrawable:vectordrawable:$rootProject.vectorDrawableVersion"
+    implementation "androidx.vectordrawable:vectordrawable-animated:$rootProject.animatedVectorDrawableVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
+
+    // network
+    implementation "com.amitshekhar.android:rx2-android-networking:$rootProject.rx2FastAndroidNetworking"
+
+    // database
+    implementation "androidx.room:room-rxjava2:$rootProject.roomDatabaseVersion"
+    kapt "androidx.room:room-compiler:$rootProject.roomDatabaseVersion"
+
+    // font
+    implementation "uk.co.chrisjenx:calligraphy:$rootProject.calligraphyVersion"
+
+    // image
+    implementation "com.github.bumptech.glide:glide:$rootProject.glideVersion"
+
+    // parser
+    implementation "com.google.code.gson:gson:$rootProject.gsonVersion"
+
+    // debug database
+    debugImplementation "com.amitshekhar.android:debug-db:$rootProject.debugDBVersion"
+
+    // dependency injection
+    implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
+    kapt "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
+    kapt "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"
+    implementation "com.google.dagger:dagger-android-support:$rootProject.dagger2Version"
+
+    // reactive
+    implementation "io.reactivex.rxjava2:rxjava:$rootProject.rxjava2Version"
+    implementation "io.reactivex.rxjava2:rxandroid:$rootProject.rxandroidVersion"
+
+    // swipe view
+    implementation "com.mindorks:placeholderview:$rootProject.placeholderviewVersion"
+
+    // logger
+    implementation "com.jakewharton.timber:timber:$rootProject.timberVersion"
+
+    // view model
+    implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
+    kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.lifecycleVersion"
+}
