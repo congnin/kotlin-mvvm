@@ -6,11 +6,11 @@
 
     <data>
 
-        <import type="android.view.View"/>
+        <import type="android.view.View" />
 
         <variable
                 name="viewModel"
-                type="com.ptbc.kotlin_mvvm.ui.main.MainViewModel"/>
+                type="com.ptbc.kotlin_mvvm.ui.main.MainViewModel" />
 
     </data>
 
@@ -49,12 +49,12 @@
                                 app:subtitleTextColor="@color/white"
                                 app:title="@string/app_name"
                                 app:titleTextAppearance="@style/Toolbar.TitleText"
-                                app:titleTextColor="@color/white"/>
+                                app:titleTextColor="@color/white" />
 
                         <View
                                 android:layout_width="match_parent"
                                 android:layout_height="1dp"
-                                android:background="@color/light_gray"/>
+                                android:background="@color/light_gray" />
 
                     </com.google.android.material.appbar.AppBarLayout>
 
@@ -63,7 +63,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             app:action="@{viewModel.action}"
-                            app:adapter="@{viewModel.questionDataList}"/>
+                            app:adapter="@{viewModel.questionDataList}" />
 
                 </LinearLayout>
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
@@ -87,7 +87,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|end"
                         android:padding="5dp"
-                        android:text="@{viewModel.appVersion}"/>
+                        android:text="@{viewModel.appVersion}" />
             </com.google.android.material.navigation.NavigationView>
 
         </androidx.drawerlayout.widget.DrawerLayout>
@@ -98,7 +98,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}"/>
+                android:visibility="@{viewModel.isLoading ? View.VISIBLE : View.GONE}" />
 
     </FrameLayout>
 

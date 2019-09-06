@@ -3,6 +3,7 @@ package com.ptbc.kotlin_mvvm
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.ptbc.kotlin_mvvm.data.DataManager
+import com.ptbc.kotlin_mvvm.ui.about.AboutViewModel
 import com.ptbc.kotlin_mvvm.ui.login.LoginViewModel
 import com.ptbc.kotlin_mvvm.ui.main.MainViewModel
 import com.ptbc.kotlin_mvvm.ui.splash.SplashViewModel
@@ -17,20 +18,17 @@ constructor(
     private val schedulerProvider: SchedulerProvider
 ) : ViewModelProvider.NewInstanceFactory() {
 
-
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-//        if (modelClass.isAssignableFrom(AboutViewModel::class.java!!)) {
-//
-//            return AboutViewModel(dataManager, schedulerProvider) as T
-//        } else if (modelClass.isAssignableFrom(FeedViewModel::class.java!!)) {
+        if (modelClass.isAssignableFrom(AboutViewModel::class.java)) {
+            return AboutViewModel(dataManager, schedulerProvider) as T
+        }
+//        else if (modelClass.isAssignableFrom(FeedViewModel::class.java!!)) {
 //
 //            return FeedViewModel(dataManager, schedulerProvider) as T
-//        } else
-        if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
-
+//        }
+        else if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
             return LoginViewModel(dataManager, schedulerProvider) as T
         } else if (modelClass.isAssignableFrom(MainViewModel::class.java!!)) {
-
             return MainViewModel(dataManager, schedulerProvider) as T
         }
 //        else if (modelClass.isAssignableFrom(BlogViewModel::class.java!!)) {
