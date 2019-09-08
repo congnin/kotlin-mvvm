@@ -5,7 +5,9 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mindorks.placeholderview.SwipePlaceHolderView
+import com.ptbc.kotlin_mvvm.data.model.api.BlogResponse
 import com.ptbc.kotlin_mvvm.data.model.other.QuestionCardData
+import com.ptbc.kotlin_mvvm.ui.feed.blogs.BlogAdapter
 import com.ptbc.kotlin_mvvm.ui.feed.opensource.OpenSourceAdapter
 import com.ptbc.kotlin_mvvm.ui.feed.opensource.OpenSourceItemViewModel
 import com.ptbc.kotlin_mvvm.ui.main.MainViewModel
@@ -13,14 +15,15 @@ import com.ptbc.kotlin_mvvm.ui.main.QuestionCard
 
 object BindingUtils {
 
-//    @BindingAdapter("adapter")
-//    fun addBlogItems(recyclerView: RecyclerView, blogs: List<BlogResponse.Blog>) {
-//        val adapter = recyclerView.adapter as BlogAdapter?
-//        if (adapter != null) {
-//            adapter!!.clearItems()
-//            adapter!!.addItems(blogs)
-//        }
-//    }
+    @BindingAdapter("adapter")
+    @JvmStatic
+    fun addBlogItems(recyclerView: RecyclerView, blogs: List<BlogResponse.Blog>?) {
+        val adapter = recyclerView.adapter as BlogAdapter?
+        if (adapter != null && blogs != null) {
+            adapter.clearItems()
+            adapter.addItems(blogs)
+        }
+    }
 
     @BindingAdapter("adapter")
     @JvmStatic

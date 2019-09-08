@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.ptbc.kotlin_mvvm.data.DataManager
 import com.ptbc.kotlin_mvvm.ui.about.AboutViewModel
 import com.ptbc.kotlin_mvvm.ui.feed.FeedViewModel
+import com.ptbc.kotlin_mvvm.ui.feed.blogs.BlogViewModel
 import com.ptbc.kotlin_mvvm.ui.feed.opensource.OpenSourceViewModel
 import com.ptbc.kotlin_mvvm.ui.login.LoginViewModel
 import com.ptbc.kotlin_mvvm.ui.main.MainViewModel
@@ -31,12 +32,10 @@ constructor(
             return LoginViewModel(dataManager, schedulerProvider) as T
         } else if (modelClass.isAssignableFrom(MainViewModel::class.java)) {
             return MainViewModel(dataManager, schedulerProvider) as T
-        }
-//        else if (modelClass.isAssignableFrom(BlogViewModel::class.java!!)) {
-//
-//            return BlogViewModel(dataManager, schedulerProvider) as T
-//        }
-        else if (modelClass.isAssignableFrom(RateUsViewModel::class.java)) {
+        } else if (modelClass.isAssignableFrom(BlogViewModel::class.java)) {
+
+            return BlogViewModel(dataManager, schedulerProvider) as T
+        } else if (modelClass.isAssignableFrom(RateUsViewModel::class.java)) {
 
             return RateUsViewModel(dataManager, schedulerProvider) as T
         } else if (modelClass.isAssignableFrom(OpenSourceViewModel::class.java)) {

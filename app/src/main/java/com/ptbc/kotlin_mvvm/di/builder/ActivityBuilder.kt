@@ -3,6 +3,7 @@ package com.ptbc.kotlin_mvvm.di.builder
 import com.ptbc.kotlin_mvvm.ui.about.AboutFragmentProvider
 import com.ptbc.kotlin_mvvm.ui.feed.FeedActivity
 import com.ptbc.kotlin_mvvm.ui.feed.FeedActivityModule
+import com.ptbc.kotlin_mvvm.ui.feed.blogs.BlogFragmentProvider
 import com.ptbc.kotlin_mvvm.ui.feed.opensource.OpenSourceFragmentProvider
 import com.ptbc.kotlin_mvvm.ui.login.LoginActivity
 import com.ptbc.kotlin_mvvm.ui.main.MainActivity
@@ -14,7 +15,10 @@ import dagger.android.ContributesAndroidInjector
 @Module
 abstract class ActivityBuilder {
 
-    @ContributesAndroidInjector(modules = [FeedActivityModule::class, OpenSourceFragmentProvider::class])
+    @ContributesAndroidInjector(
+        modules = [FeedActivityModule::class,
+            BlogFragmentProvider::class, OpenSourceFragmentProvider::class]
+    )
     internal abstract fun bindFeedActivity(): FeedActivity
 
     @ContributesAndroidInjector
