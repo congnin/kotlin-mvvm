@@ -43,18 +43,18 @@ ext {
     vectorDrawableVersion = '1.0.1'
     animatedVectorDrawableVersion = '1.0.0'
     gsonVersion = '2.8.2'
-    calligraphyVersion = '2.2.0'
+    calligraphyVersion = '2.3.0'
     glideVersion = '3.7.0'
     roomDatabaseVersion = '2.0.0'
     rx2FastAndroidNetworking = '1.0.1'
 
     dagger2Version = '2.16'
     rxjava2Version = '2.1.9'
-    rxandroidVersion = '2.0.2'
+    rxandroidVersion = '2.1.1'
     placeholderviewVersion = '0.6.1'
-    debugDBVersion = '1.0.3'
-    timberVersion = '4.5.1'
-    lifecycleVersion = '2.0.0'
+    debugDBVersion = '1.0.6'
+    timberVersion = '4.7.1'
+    lifecycleVersion = '2.1.0'
 
     // Test dependencies
     junitVersion = '4.12'

@@ -12,7 +12,6 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.Observable
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -29,7 +28,9 @@ import com.ptbc.kotlin_mvvm.databinding.ActivityMainBinding
 import com.ptbc.kotlin_mvvm.databinding.NavHeaderMainBinding
 import com.ptbc.kotlin_mvvm.ui.about.AboutFragment
 import com.ptbc.kotlin_mvvm.ui.base.BaseActivity
+import com.ptbc.kotlin_mvvm.ui.feed.FeedActivity
 import com.ptbc.kotlin_mvvm.ui.login.LoginActivity
+import com.ptbc.kotlin_mvvm.ui.main.rating.RateUsDialog
 import com.ptbc.kotlin_mvvm.utils.ScreenUtils
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -214,11 +215,11 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNav
                     true
                 }
                 R.id.navItemRateUs -> {
-//                    RateUsDialog.newInstance().show(supportFragmentManager)
+                    RateUsDialog.newInstance().show(supportFragmentManager)
                     true
                 }
                 R.id.navItemFeed -> {
-//                    startActivity(FeedActivity.newIntent(this@MainActivity))
+                    startActivity(FeedActivity.newIntent(this@MainActivity))
                     true
                 }
                 R.id.navItemLogout -> {
